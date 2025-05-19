@@ -1,2 +1,166 @@
-# checkout_with_stripe_app
-checkout with stripe app
+Project Description
+
+This is a full-stack e-commerce platform with integrated Stripe Checkout for processing payments in Indian Rupees (INR). The frontend is built with React, enabling users to view products, add them to a cart, and securely pay via Stripe. The backend, built with Node.js and Express, handles session creation, order persistence, and webhook-based status updates. MongoDB is used to store order data.
+
+Features
+
+Browse products and add them to the cart
+
+View cart with real-time totals
+
+Checkout using Stripe in INR
+
+Stripe-hosted checkout page (secure and PCI-compliant)
+
+Store order details in MongoDB
+
+Handle Stripe webhooks for payment confirmation
+
+Virtual property to get amountInRupees in database
+
+Modular and scalable codebase
+
+
+
+---
+
+
+Technologies Used
+
+Frontend: React, Axios
+
+Backend: Node.js, Express.js
+
+Database: MongoDB + Mongoose
+
+Payments: Stripe Checkout (INR)
+
+Deployment: Local / Vercel / Render / Railway
+
+
+
+---
+
+README.md
+
+# Stripe-Powered E-Commerce App (INR Payments)
+
+This is a full-stack e-commerce app with Stripe Checkout integration in Indian Rupees (₹). Built with React, Node.js, and MongoDB, it lets users browse items, add to cart, and pay securely via Stripe. Orders are persisted in MongoDB, and Stripe webhooks ensure payment status tracking.
+
+---
+
+## Features
+
+- Add-to-cart and checkout flow
+- Stripe-hosted payment page (INR)
+- Secure order storage in MongoDB
+- Webhook to update payment status
+- Responsive UI (React)
+
+---
+
+## Prerequisites
+
+- Node.js v18+
+- MongoDB (Atlas or local)
+- Stripe account (Test mode API keys)
+- Yarn or npm
+
+---
+
+## Setup
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/your-username/stripe-inr-ecommerce.git
+cd stripe-inr-ecommerce
+
+2. Setup .env file
+
+Create a .env file in the root of /server:
+
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+STRIPE_SECRET_KEY=sk_test_...
+CLIENT_URL=http://localhost:3000
+WEBHOOK_SECRET=whsec_...
+
+> Note: You’ll get STRIPE_SECRET_KEY and WEBHOOK_SECRET from your Stripe dashboard.
+
+
+
+3. Install dependencies
+
+# Install backend
+cd server
+npm install
+
+# Install frontend
+cd ../client
+npm install
+
+
+---
+
+Running the App
+
+1. Start MongoDB
+
+If using local MongoDB:
+
+mongod
+
+2. Run Backend
+
+cd server
+npm start
+
+3. Run Frontend
+
+cd client
+npm start
+
+The app will open at http://localhost:3000.
+
+
+---
+
+Webhook Setup (Optional but Recommended)
+
+To handle Stripe webhook events locally, use the Stripe CLI:
+
+stripe login
+stripe listen --forward-to localhost:5000/webhook
+
+Copy the webhook secret from Stripe CLI output and paste it into your .env as WEBHOOK_SECRET.
+
+
+---
+
+Folder Overview
+
+server/controllers/checkoutController.js – Stripe session creation logic
+
+server/models/Order.js – Order schema with virtuals
+
+server/webhook/stripe.js – Webhook for payment updates
+
+client/ – React frontend (cart, checkout, success/cancel pages)
+
+
+
+---
+
+Example Order Data (MongoDB)
+
+{
+  "email": "user@example.com",
+  "amount": 58500,
+  "currency": "inr",
+  "items": [
+    { "productId": "1", "name": "Punjabi Thali", "price": 350, "quantity": 1 }
+  ],
+  "status": "PENDING",
+  "amountInRupees": "585.00"
+}
