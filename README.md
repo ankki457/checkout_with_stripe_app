@@ -33,9 +33,8 @@ Backend: Node.js, Express.js
 
 Database: MongoDB + Mongoose
 
-Payments: Stripe Checkout (INR)
+Payments: Stripe Checkout (INR), webhooks.
 
-Deployment: Local / Vercel / Render / Railway
 
 
 
@@ -62,7 +61,7 @@ This is a full-stack e-commerce app with Stripe Checkout integration in Indian R
 ## Prerequisites
 
 - Node.js v18+
-- MongoDB (Atlas or local)
+- MongoDB (Atlas)
 - Stripe account (Test mode API keys)
 - Yarn or npm
 
@@ -73,8 +72,8 @@ This is a full-stack e-commerce app with Stripe Checkout integration in Indian R
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/stripe-inr-ecommerce.git
-cd stripe-inr-ecommerce
+git clone https://github.com/ankki457/checkout_with_stripe_app.git
+cd checkout_with_stripe_app
 
 2. Setup .env file
 
@@ -82,9 +81,9 @@ Create a .env file in the root of /server:
 
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
-STRIPE_SECRET_KEY=sk_test_...
+STRIPE_SECRET=sk_test_...
 CLIENT_URL=http://localhost:3000
-WEBHOOK_SECRET=whsec_...
+STRIPE_WEBHOOK_SECRET=whsec_...
 
 > Note: You’ll get STRIPE_SECRET_KEY and WEBHOOK_SECRET from your Stripe dashboard.
 
@@ -126,27 +125,14 @@ The app will open at http://localhost:3000.
 
 ---
 
-Webhook Setup (Optional but Recommended)
+Webhook Setup
 
 To handle Stripe webhook events locally, use the Stripe CLI:
 
 stripe login
 stripe listen --forward-to localhost:5000/webhook
 
-Copy the webhook secret from Stripe CLI output and paste it into your .env as WEBHOOK_SECRET.
-
-
----
-
-Folder Overview
-
-server/controllers/checkoutController.js – Stripe session creation logic
-
-server/models/Order.js – Order schema with virtuals
-
-server/webhook/stripe.js – Webhook for payment updates
-
-client/ – React frontend (cart, checkout, success/cancel pages)
+Copy the webhook secret from Stripe CLI output and paste it into your .env as STRIPE_WEBHOOK_SECRET.
 
 
 
