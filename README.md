@@ -145,8 +145,8 @@ Example Order Data (MongoDB)
   "amount": 58500,
   "currency": "inr",
   "items": [
-    { "productId": "1", "name": "Punjabi Thali", "price": 350, "quantity": 1 }
+    { "productId": "1", "name": "Adidas", "price": 3500, "quantity": 1 }
   ],
   "status": "PENDING",
-  "amountInRupees": "585.00"
+  "amountInRupees": "5850.00"
 }
