@@ -54,10 +54,6 @@ The app integrates **Stripe Checkout** for secure payments in INR and uses **Mon
 
 ---
 
-## 📂 Folder Structure
-
-checkout_with_stripe_app/ │ ├── client/                # Frontend React app │   ├── public/ │   ├── src/ │   │   ├── components/    # Reusable UI components │   │   ├── pages/         # Page components (Home, Product, Cart, Checkout) │   │   ├── context/       # Global state management │   │   ├── utils/         # Helper functions │   │   └── App.js │   ├── package.json │ ├── server/                # Backend Node.js app │   ├── models/            # Mongoose schemas │   ├── routes/            # API routes │   ├── controllers/       # Business logic │   ├── server.js          # App entry point │   ├── package.json │ └── README.md              # Documentation
-
 
 ## 🚀 Setup Instructions
 
@@ -102,7 +98,7 @@ npm start
 
 Visit: http://localhost:3000
 
-
+```
 ---
 
 📦 Webhook Setup (Optional for Local Testing)
